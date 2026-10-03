@@ -32,9 +32,7 @@ jobs:
       - name: Build Windows Executables
         working-directory: desktop-app
         run: |
-          npx electron-builder --win nsis portable
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          npx electron-builder --win nsis portable --publish never
 
       - name: Upload Windows Setup Artifact
         uses: actions/upload-artifact@v4

@@ -3,6 +3,10 @@
   "productName": "Mehar Filling Station ERP",
   "version": "1.0.0",
   "description": "Official Desktop Application for Mehar Filling Station Petrol Pump ERP",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sastishoppingstore/mehar-filling-station-app.git"
+  },
   "author": "Vital Petroleum Franchise — Mehar Filling Station",
   "main": "main.js",
   "scripts": {
