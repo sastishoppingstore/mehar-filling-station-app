@@ -1,0 +1,44 @@
+name: Build Windows Desktop App
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'desktop-app/**'
+      - '.github/workflows/build-windows.yml'
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    name: Build Windows (.exe) Installer & Portable
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Desktop App Dependencies
+        working-directory: desktop-app
+        run: |
+          npm install
+
+      - name: Build Windows Executables
+        working-directory: desktop-app
+        run: |
+          npx electron-builder --win nsis portable
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Windows Setup Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mehar-Filling-Station-Windows-Setup
+          path: desktop-app/dist/*.exe
+          if-no-files-found: error

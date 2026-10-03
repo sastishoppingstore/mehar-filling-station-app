@@ -1,0 +1,19 @@
+{
+  "name": "mehar-filling-station-erp-android",
+  "version": "1.0.0",
+  "description": "Android Application for Mehar Filling Station Petrol Pump ERP",
+  "private": true,
+  "scripts": {
+    "sync": "cap sync android",
+    "open": "cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/splash-screen": "^6.0.2",
+    "@capacitor/status-bar": "^6.0.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "appId": "pro.meharfillingstation.app",
+  "appName": "Mehar Filling Station ERP",
+  "webDir": "www",
+  "server": {
+    "url": "https://meharfillingstation.pro/erp",
+    "cleartext": true,
+    "allowNavigation": [
+      "meharfillingstation.pro",
+      "*.meharfillingstation.pro"
+    ]
+  },
+  "android": {
+    "allowMixedContent": true,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2500,
+      "launchAutoHide": true,
+      "backgroundColor": "#070B14",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#070B14"
+    }
+  }
+}

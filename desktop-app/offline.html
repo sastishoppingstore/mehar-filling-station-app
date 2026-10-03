@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mehar Filling Station ERP — Connection Required</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        body {
+            background-color: #070B14;
+            color: #F8FAFC;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+        .glow-blob {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(215, 25, 32, 0.22) 0%, rgba(215, 25, 32, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(40px);
+        }
+        .card {
+            position: relative;
+            background: rgba(14, 22, 42, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            z-index: 10;
+        }
+        .logo-wrap {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 24px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #D71920 0%, #8E0B10 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(215, 25, 32, 0.45);
+        }
+        .logo-wrap img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+        }
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #FFFFFF;
+        }
+        .sub-urdu {
+            font-size: 15px;
+            color: #CBD5E1;
+            margin-bottom: 16px;
+            direction: rtl;
+        }
+        p {
+            color: #94A3B8;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+        .btn-retry {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #D71920 0%, #B51218 100%);
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 20px rgba(215, 25, 32, 0.4);
+            width: 100%;
+        }
+        .btn-retry:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(215, 25, 32, 0.6);
+        }
+        .btn-retry:active {
+            transform: translateY(0);
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #EF4444;
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 9999px;
+            padding: 4px 12px;
+            margin-bottom: 20px;
+        }
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: #EF4444;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow-blob"></div>
+    <div class="card">
+        <div class="logo-wrap">
+            <img src="build/icon.png" alt="Mehar Logo">
+        </div>
+
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            No Active Internet Connection
+        </div>
+
+        <h1>Mehar Filling Station ERP</h1>
+        <div class="sub-urdu">مہر فلنگ اسٹیشن — پیٹرول پمپ مینجمنٹ سسٹم</div>
+
+        <p>
+            Unable to connect to the station forecourt cloud server. Please ensure your computer is connected to the internet or Wi-Fi network and try again.
+        </p>
+
+        <button class="btn-retry" onclick="triggerRetry()">
+            🔄 Reconnect / دوبارہ کوشش کریں
+        </button>
+    </div>
+
+    <script>
+        function triggerRetry() {
+            if (window.desktopApp && window.desktopApp.retryConnection) {
+                window.desktopApp.retryConnection();
+            } else {
+                window.location.href = 'https://meharfillingstation.pro/erp';
+            }
+        }
+
+        // Auto-reconnect when network returns online
+        window.addEventListener('online', () => {
+            triggerRetry();
+        });
+    </script>
+</body>
+</html>
